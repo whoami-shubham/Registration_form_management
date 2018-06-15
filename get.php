@@ -1,10 +1,10 @@
 <?php
 
 $email = $_POST['email'];
-
+$id = $_POST['id'];
 $con = mysqli_connect('localhost','root','','regform');
 
-$query = "SELECT * FROM form WHERE email='$email'";
+$query = "SELECT * FROM form WHERE email='$email' OR id='$id'";
 
 $result = mysqli_query($con,$query);
 
@@ -20,6 +20,10 @@ if($num == 1){
 	<tr>
 	   <td style="padding: 5px">Name</td>
 	   <td style="padding: 5px"><?php echo $array[0]; ?></td>
+    </tr>
+    <tr>
+	   <td style="padding: 5px">ID</td>
+	   <td style="padding: 5px"><?php echo $array[14]; ?></td>
     </tr>
     <tr>
 	   <td style="padding: 5px">Collage</td>
@@ -72,6 +76,10 @@ if($num == 1){
 	<tr>
 		<td style="padding: 5px">Internship On</td>
 		<td style="padding: 5px"><?php echo $array[13]; ?></td>
+	</tr>
+	<tr>
+		<td style="padding: 5px">Batch</td>
+		<td style="padding: 5px"><?php echo $array[15]; ?></td>
 	</tr>
 
 		
