@@ -4,7 +4,8 @@
  can retrive the data of all interns just by click on view all button or  <br />
 admin can retrive the entire information of a particular  <br />
 intern by using their email or ID . <br />
-provided for Admin.
+provided for Admin . here iits logo  is logo of  <br/>
+organisation 
 
 # User interface
 
