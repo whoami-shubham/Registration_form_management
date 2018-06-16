@@ -63,13 +63,15 @@ border:none;
 border:1px solid #cccccc;
 }
 .Left{
-  margin-left: 20%;
+  margin-left: 15%;
+  padding-left: 5%;
+  padding-right: 5%;
   color: white;
   background-color: #272727;
   opacity: 0.8;
   border-radius: 8px;
   border:1px solid #272727;
-  margin-top: 2%;
+  margin-top: 10%;
 }
 h2{
    margin-left: 25%;
@@ -82,8 +84,9 @@ td{
   font-family: "Roboto",Arial,Helvetica,sans-serif;
 }
 .right{
-    margin-right: 30%; 
-    margin-top: 55%;
+    margin-right:30%; 
+    margin-top: 50%;
+    padding-bottom: 2%;
 }
 .d{
     width:100%;
@@ -99,18 +102,40 @@ td{
   font-size: 16px;
   border: none;
 }
+
+
 html {
   background-image: url('b1.jpg');
   background-size: 100%;
+} 
+
+.cent{
+   text-align: center;
+   width: 35%;
+   margin-top: 10%;
+   font-size: 20px;
+   margin-left: 20%;
+   margin-right: 10%;
+   padding: 5%;
+}
+.t{
+  background-color: #191919;
+  opacity: 0.9;
+  border-radius:8px;
+  border:1px solid #191919;
+  padding: 5%;
+  margin: 5px;
 }
 
+
 @media screen and (max-width: 900px){
-    .col-6{
+    .col-6,.col-8,.col-4{
         width: 100%;
         margin-top: 0;   
     }
     .Left{
-        margin-right: 15%;
+        margin-right: 12%;
+        border: 3px solid blue;
     }
     html{
         background-color: black;
@@ -119,7 +144,49 @@ html {
 
     .right{
         margin-top: 10%;
+        margin-left:  20%;
+        padding-left: 10%;
+        border: 3px solid blue;
         
     }
+   .cent{
+       margin: 0;
+       margin-top: 10%;
+       width: 80%;
+    }
+    .e,.g,.t{
+      width: 80%;
+      margin-right: 10%;
+    }
+   
+
 }
  
+
+@media screen and (max-width: 480px){
+  .col-6,.col-8,.col-4{
+        width: 100%;
+        margin-top: 0;   
+    }
+
+    .Left{
+        margin: 0;
+    }
+    .right{
+      margin-top: 10px;
+      margin-right: 0;
+      margin-left: 0;
+    }
+    .cent{
+       margin-left: 0;
+       margin-top: 10%;
+       width: 100%;
+       padding: 0;
+    }
+    .e,.g,.t{
+      width: 100%;
+      margin-right: 10%;
+    }
+    
+    
+}

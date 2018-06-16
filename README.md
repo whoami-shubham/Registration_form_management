@@ -8,8 +8,22 @@ provided for Admin.
 
 # User interface
 
-![Alt text](img.png?raw=true "UI")
+![Alt text](log.png?raw=true "UI")
 
 # Admin panel
 
-![Alt text](admin.png?raw=true "Admin")
+![Alt text](dash.png?raw=true "Admin")
+
+# view one intern's Data
+
+![Alt text](view.png?raw=true "UI")
+
+# View All intern
+
+![Alt text](all.png?raw=true "UI")
+
+# Error page
+
+if you try to go on the page that doen't exists
+
+![Alt text](error.png?raw=true "UI")

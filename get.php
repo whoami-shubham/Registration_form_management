@@ -1,15 +1,40 @@
 <?php
+session_start();
 
-$email = $_POST['email'];
-$id = $_POST['id'];
+if( !isset($_POST['check'])  && !isset($_SESSION['sucess'])){
+  header('location:index.php');
+}
+
+if(!isset($_POST['check']) or !(($_POST['id']!="") or ($_POST['email']!=""))){
+	$_SESSION['e1']=1;
+	header('location:dashboard.php');
+  }
+$_SESSION['e1']=0;
+
+if ($_POST['email']!=""){
+
+ $email = $_POST['email'];
+ $query = "SELECT * FROM form WHERE email='$email'";
+
+}
+else{
+ $id = $_POST['id'];
+ $query = "SELECT * FROM form WHERE id='$id'";
+}
+
 $con = mysqli_connect('localhost','root','','regform');
 
-$query = "SELECT * FROM form WHERE email='$email' OR id='$id'";
+#echo $query;
 
 $result = mysqli_query($con,$query);
 
 $num = mysqli_num_rows($result);
+
+
+
 ?>
+
+
 <html style="background-image: url('b1.jpg'); background-size: 100%">
 <?php
 if($num == 1){
@@ -85,13 +110,13 @@ if($num == 1){
 		
 	</table>
 	<?php 
-	echo '<pre style="text-align:center;color:#f4c20d;font-size:16px">to go back to the Registration page  click <a href="form2.html">here</a></pre>';
+	echo ' <a href="dashboard.php" style="text-decoration:none;text-align:center;color:white;font-size:20px;font-weight:400;float:right;padding:15px">Back</a>';
 	?>
 <?php
 }
 else{
-	echo '<p style="text-align:center;color:red; font-size:20px"> invalid  email </p><br>';
-	echo '<pre style="text-align:center;color:#4885ed;font-size:16px">Try <a href="form2.html">Again</a></pre>';
+	echo '<p style="text-align:center;color:red; font-size:20px"> invalid  email or ID </p><br>';
+	echo '<a href="dashboard.php" style="text-decoration:none;color:white;font-size:20px;font-weight:400;float:right;padding:15px">Try Again</a>';
 }
 ?>
 </html>

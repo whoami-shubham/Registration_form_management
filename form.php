@@ -1,4 +1,13 @@
 <?php
+session_start();
+
+if( !isset($_POST['insert'])){
+  header('location:index.php');
+
+}
+
+
+
 $name    =  htmlspecialchars($_POST['name']);
 $collage =  htmlspecialchars($_POST['collage']);
 $branch  =  htmlspecialchars($_POST['branch']);
@@ -18,37 +27,40 @@ $batch   =  htmlspecialchars($_POST['batch']);
 
 $con = mysqli_connect("localhost","root","","regform");
 
-$query1 = "SELECT count(*) FROM form where batch='$batch'";
-$result = mysqli_query($con,$query1);
+$query = "SELECT count(*) FROM form WHERE batch='$batch'";
+$result = mysqli_query($con,$query);
 $count = mysqli_fetch_array($result);
 
-echo $count[0];
-echo '<br>';
+
+#echo $count[0];
+#echo '<br>';
  $total = $count[0] + 1;
  $id = $batch.$total.date('M').date("y");
  echo $id; 
 
-$query2 = "INSERT  INTO form (name,collage,branch,year,address,phno,email,fname,fno,toi,duration,doc,skills,ion,batch,id) 
-VALUES ('$name','$collage','$branch','$year','$address','$phno','$email','$fname','$fno','$toi','$duration','$doc','$skills','$ion','$batch','$id')";
-/*
-$query2 = "INSERT  INTO form (name,collage,branch,year,address,phno,email,fname,fno,toi,duration,doc,skills,ion,batch,id) 
-VALUES ('$name','$collage','$branch','$year','$address','$phno','$email','$fname','$fno','$toi','$duration','$doc','$skills','$ion','$batch',( SELECT '$batch'+ count(*) + '$y'  FROM form WHERE batch='$batch' ))";
+$query = "INSERT INTO form(name,collage,branch,year,address,phno,email,fname,fno,toi,duration,doc,skills,ion,id,batch)   VALUES('$name','$collage','$branch','$year','$address','$phno','$email','$fname','$fno','$toi','$duration','$doc','$skills','$ion','$id','$batch')";
 
-echo $query2;
-*/
 
-$result = mysqli_query($con,$query2);
+
+$result = mysqli_query($con,$query);
+
+
+ 
 ?>
-<html style="background-image: url('b1.jpg'); background-size: 100%">
+
+<html  style="background-image: url('b1.jpg'); background-size: 100%" >
+
 <?php
+
 if($result){
   echo '<h3 style="color:green;text-align:center;font-size:16px">Sucessfully registered </h3>';
-  echo '<pre style="text-align:center;color:#4885ed;font-size:16px">to go back to the Registration page  click <a href="form2.html">here</a></pre>';
+  echo ' <a href="index.php" style="text-decoration:none;text-align:center;color:white;font-size:20px;font-weight:400;float:right;padding:15px">Back</a>';
+	
 }
 
 else{
 	echo '<h3 style="color:red;text-align:center;font-size:16px">Some Error Occured :( <br>   or You have entered that email already taken . </h3>';
-	echo '<pre style="text-align:center;color:#4885ed;font-size:16px">to go back to the Registration page  click <a href="form2.html">here</a></pre>';
+	echo ' <a href="index.php" style="text-decoration:none;text-align:center;color:white;font-size:20px;font-weight:400;float:right;padding:15px">Back</a>';
        
 }
 

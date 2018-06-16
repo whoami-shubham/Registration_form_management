@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+if (!($_SESSION['sucess']==true)){
+   header('location:index.php');
+}
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,59 +13,50 @@
      <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-<div class="container">
-<div class="row">
-<div class="col-6 ">
-                    <div class = "Left" style="margin-right: 30%; margin-top: 30%">
-                    <form action="get.php" method="post" name="myForm">
-                         <h2>View Informations</h2>
-                         <br>
-                       <table >
-                        
-                             <tr>
-                                  <td> Email</td>
-                                 <td>
-                                       <input type="email" name="email"  style="width:100%;" >
-                                 </td>  
-                              </tr>
-                              <tr>
-                                <td></td>
-                                <td><p>Or</p></td>
-                              </tr>
-                         <tr>
-                                  <td> ID</td>
-                                 <td>
-                                       <input type="text" name="id"  style="width:100%;" >
-                                 </td>  
-                         </tr>
-                           <tr>
-                              <td></td>
-                              <td >
-                                   <br>
-                                   <input class="button" type="submit" name="check" value="check" onclick="validateAndSend()" style="width: 100px">
-                                   <a href="all.php"><button class="button" style="width: 100px;border-radius: 5px" name="button" value="OK" type="button">view All</button></a>
-                              </td>
-                         </tr>
-               </table>
-                </form>
-                 <script>
-                 jQuery(function ($) {
-    var $inputs = $('input[name=email],input[name=id]');
-    $inputs.on('input', function () {
-        // Set the required property of the other input to false if this input is not empty.
-        $inputs.not(this).prop('required', !$(this).val().length);
-            window.history.back();
+  <?php 
+          if (isset($_SESSION['e1']) and $_SESSION['e1']==1){ ?>
+        <p style="color: red;text-align: center;">You must have to enter one field </p>
+                  <?php  }
+              ?>
+    <div>
+       <div class="container">
+            <div class="row">
+                   <a href="logout.php"> <button class="button" style="width: 100px;float:right;border-radius: 5px; margin: 2%" name="logout" type="button">Logout
+                                      </button>
+                   </a>
+            </div>
+            <div class="row">
+              <div class="col-3 cent" >
+                   <table class="t">
+                    <form action="get.php" method="post">
+                     <tr>
+                       <td style="color: white"> Email</td>
+                       <td><input class="e" type="email" name="email" style="width:240px"></td>
+                     </tr>
+                     <tr>
+                       <td></td>
+                       <td style="color: white" >Or</td>
+                     </tr>
+                     <tr>
+                       <td style="color: white">&nbsp;&nbsp;ID&nbsp;&nbsp;</td>
+                       <td><input class="d" type="text" name="id" style="width: 240px"></td>
+                     </tr>
+                     <tr >
 
-    });
-});
-        
-                </script> 
-           </div>
-      </div>
- </div>
-     </div>
-     <pre style="text-align:center;color:white;font-size:16px;padding-top: 30%">to go back   click <a href="form2.html">here</a></pre> 
+                      <td >
+                     <br> &nbsp;&nbsp;&nbsp;<input type="submit" class="button" style="width: 100px;border-radius: 5px;" name="check" value="View" ></form>
+                     </td>
+                     <td >
+                       <form action="all.php" method="post"><br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="button" style="width: 100px;border-radius: 5px;" name="all"  type="submit"value="View All"></form>
+                       <pre></pre>
+                     </td>
+                     </tr>
+                   </table> 
+              </div>
+            </div>
+       </div>
+    </div>
+
 </body>
 </html>
-
 

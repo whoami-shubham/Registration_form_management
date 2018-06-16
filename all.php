@@ -1,9 +1,20 @@
 <?php
-$con = mysqli_connect('localhost','root','','regform');
+session_start();     # session start
 
-$query = "SELECT * FROM form ";
+if( !isset($_POST['all'])  && !isset($_SESSION['sucess'])){  # if admin is logged in 
+  header('location:index.php');                      # then 'sucess' will have
+                                                     # some value given in index.php 
+}                                                    # and also make sure user is
+if(!isset($_POST['all']) ){                          # clicked 'View All' button
+                                                     # in dashboard
+	header('location:dashboard.php');
+}
 
-$result = mysqli_query($con,$query);
+$con = mysqli_connect('localhost','root','','regform');  # connect to db
+                                                       
+$query = "SELECT * FROM form ";                          # Query
+
+$result = mysqli_query($con,$query);                   
 
 $array = mysqli_fetch_array($result);
 
@@ -25,7 +36,7 @@ do{
  echo '</td>';
  
 }while($array = mysqli_fetch_array($result));
-echo '<pre style="text-align:center;color:#f4c20d;font-size:16px">to go back to the Registration page  click <a href="form2.html">here</a></pre>';
+echo ' <a href="dashboard.php" style="text-decoration:none;text-align:center;color:white;font-size:20px;font-weight:400;float:right;padding:15px">Back</a>';
 	?>
 ?>
 </table>
