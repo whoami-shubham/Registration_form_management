@@ -1,4 +1,4 @@
-# Registration_form_management
+# Registration management
  This is simple and responsive Registration website   <br />
  which saves data of interns in database and admin <br />
  can retrive the data of all interns just by click on view all button or  <br />
